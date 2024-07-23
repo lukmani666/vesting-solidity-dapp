@@ -27,7 +27,7 @@ export default function Admin() {
                     signer
                 );
     
-                const contract = await factory.deploy(orgName, orgSymbol, ethers.utils.parseUnits(intialSupply, 18));
+                const contract = await factory.deploy(orgName, orgSymbol, ethers.parseUnits(intialSupply, 18));
                 await contract.deployed();
                 alert("Organization Token deployed at: " + contract.address);
                 console.log("Organization Token deployed at:", contract.address);
@@ -53,7 +53,7 @@ export default function Admin() {
                 const signer = provider.getSigner();
                 const vestingContract = new ethers.Contract(vestingContractAddress, Vesting.abi, signer)
     
-                await vestingContract.addStakeholder(stakeholderAddress, ethers.utils.parseUnits(stakeholderAmount, 18), releaseTime);
+                await vestingContract.addStakeholder(stakeholderAddress, ethers.parseUnits(stakeholderAmount, 18), releaseTime);
                 alert('Stakeholder added');
                 console.log('Stakeholder added');
             } else {
